@@ -2,6 +2,7 @@
 
 
 #include "Timer.h"
+#include "Kismet/GameplayStatics.h"
 
 #define PrintString(String) GEngine->AddOnScreenDebugMessage(-1, 1.0f, FColor::White, String)
 // Sets default values
@@ -28,7 +29,7 @@ void ATimer::TimerFunction() {
 	TimeRemaining--;
 
 	// inline if else call
-	TimeRemaining == 0 ? PrintString("Finished Looping"), GetWorldTimerManager().ClearTimer(TimerHandle) : PrintString("Decreasing Time!");
+	TimeRemaining == 0 ? PrintString("Finished Looping"), GetWorldTimerManager().ClearTimer(TimerHandle), UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName(), false)) : PrintString("Decreasing Time!");
 
 	PrintString(FString::Printf(TEXT("Seconds Remaining: %d"), TimeRemaining));
 }

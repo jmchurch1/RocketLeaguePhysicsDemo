@@ -4,26 +4,26 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Timer.generated.h"
+#include "EnemyVehicle.generated.h"
 
 UCLASS()
-class RLPHYSICSDEMO_API ATimer : public AActor
+class RLPHYSICSDEMO_API AEnemyVehicle : public AActor
 {
 	GENERATED_BODY()
 	
 public:	
 	// Sets default values for this actor's properties
-	ATimer();
+	AEnemyVehicle();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY (EditAnywhere, BlueprintReadWrite, Category = "Timer")
-	int32 TimeRemaining = 60;
-
 public:	
-	void TimerFunction();
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
 
-	FTimerHandle TimerHandle;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spline")
+		UStaticMeshComponent* Vehicle;
+
 };
