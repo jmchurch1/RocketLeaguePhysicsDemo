@@ -39,8 +39,6 @@ void ASplineMovement::Tick(float DeltaTime)
 		Alpha -= 1;
 
 	// debug text: https://forums.unrealengine.com/t/convert-float-to-fstring-c/275580
-	FString TheFloatStr = FString::SanitizeFloat(Alpha);
-	GEngine->AddOnScreenDebugMessage(-1, 1.0, FColor::Red, *TheFloatStr);
 	float currentDistance = FMath::Lerp(0.0, trackLength, Alpha);
 	
 	Vehicle->SetRelativeLocationAndRotation(

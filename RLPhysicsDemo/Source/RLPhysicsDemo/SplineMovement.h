@@ -32,9 +32,6 @@ public:
 		UStaticMeshComponent* Vehicle;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spline")
-		UStaticMesh* VehicleBody;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spline")
 		float Speed;
 
 	

@@ -19,7 +19,7 @@ void ATimer::BeginPlay()
 	Super::BeginPlay();
 	
 	// start up the timer
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &ATimer::TimerFunction, 1, true, 0);
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ATimer::TimerFunction, 1, false, 0);
 }
 
 
