@@ -9,7 +9,7 @@
 ATimer::ATimer()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = true;
+	PrimaryActorTick.bCanEverTick = false;
 
 }
 
@@ -19,7 +19,7 @@ void ATimer::BeginPlay()
 	Super::BeginPlay();
 	
 	// start up the timer
-	GetWorldTimerManager().SetTimer(TimerHandle, this, &ATimer::TimerFunction, 1, false, 0);
+	GetWorldTimerManager().SetTimer(TimerHandle, this, &ATimer::TimerFunction, 1, true, 0);
 }
 
 
@@ -29,7 +29,12 @@ void ATimer::TimerFunction() {
 	TimeRemaining--;
 
 	// inline if else call
-	TimeRemaining == 0 ? PrintString("Finished Looping"), GetWorldTimerManager().ClearTimer(TimerHandle), UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName(), false)) : PrintString("Decreasing Time!");
+	TimeRemaining == 0 ? PrintString("Finished Looping"), UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName(), false)) : PrintString("Decreasing Time!");
 
 	PrintString(FString::Printf(TEXT("Seconds Remaining: %d"), TimeRemaining));
+}
+
+void ATimer::IncrementTimeRemaining(int time)
+{
+	TimeRemaining += time;
 }

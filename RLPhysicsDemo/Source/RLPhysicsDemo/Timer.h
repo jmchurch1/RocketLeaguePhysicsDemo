@@ -20,10 +20,12 @@ protected:
 	virtual void BeginPlay() override;
 
 	UPROPERTY (EditAnywhere, BlueprintReadWrite, Category = "Timer")
-	int32 TimeRemaining = 60;
+	int32 TimeRemaining = 20;
 
 public:	
 	void TimerFunction();
+
+	void IncrementTimeRemaining(int time);
 
 	FTimerHandle TimerHandle;
 };

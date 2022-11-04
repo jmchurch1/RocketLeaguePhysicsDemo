@@ -23,7 +23,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void Raycast();
+
+	float Health;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spline")
 		UStaticMeshComponent* Vehicle;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spline")
+		UActorComponent* PlayerReference;
 };

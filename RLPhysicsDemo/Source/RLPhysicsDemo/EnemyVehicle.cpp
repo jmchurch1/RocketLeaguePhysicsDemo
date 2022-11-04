@@ -2,6 +2,8 @@
 
 
 #include "EnemyVehicle.h"
+#include "EngineUtils.h"
+#include "DrawDebugHelpers.h"
 
 // Sets default values
 AEnemyVehicle::AEnemyVehicle()
@@ -11,19 +13,36 @@ AEnemyVehicle::AEnemyVehicle()
 
 	Vehicle = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Vehicle"));
 
+	Health = 50;
 }
 
 // Called when the game starts or when spawned
 void AEnemyVehicle::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
 void AEnemyVehicle::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+	Raycast();
+}
 
+void AEnemyVehicle::Raycast() 
+{
+	FHitResult OutHit;
+
+	FVector Start = Vehicle->GetComponentLocation();
+	// (position you are going to - start position).normalized
+	FVector ForwardVector =  -Start;
+	ForwardVector.Normalize();
+
+	FVector End = Start + (ForwardVector * 5000.f);
+
+	FCollisionQueryParams CollisionParams;
+	CollisionParams.AddIgnoredActor(this->GetOwner());
+	// draw raycast debug line
+	DrawDebugLine(GetWorld(), Start, End, FColor::Green, false, 1, 0, 1);
 }
 
