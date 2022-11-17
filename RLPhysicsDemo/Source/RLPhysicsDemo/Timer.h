@@ -19,12 +19,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY (EditAnywhere, BlueprintReadWrite, Category = "Timer")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timer")
 	int32 TimeRemaining = 20;
 
 public:	
 	void TimerFunction();
 
+	UFUNCTION(BlueprintCallable, Category = "Time")
 	void IncrementTimeRemaining(int time);
 
 	FTimerHandle TimerHandle;

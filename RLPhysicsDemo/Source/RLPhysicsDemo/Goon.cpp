@@ -19,6 +19,10 @@ AGoon::AGoon()
 	Goon->SetSkeletalMesh(MeshAsset.Object);
 	ConstructorHelpers::FObjectFinder<UPhysicsAsset>PhysicsAsset(TEXT("PhysicsAsset'/Game/SCK_Casual01/Mannequin/Character/Mesh/SK_Mannequin_PhysicsAsset.SK_Mannequin_PhysicsAsset'"));
 	Goon->SetPhysicsAsset(PhysicsAsset.Object);
+	// makes it so collision can occur
+	Goon->SetNotifyRigidBodyCollision(true);
+	// makes it so overlap can occur
+	Goon->SetGenerateOverlapEvents(true);
 	// problem?
 	Goon->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
 	Goon->SetCollisionObjectType(ECC_WorldDynamic);

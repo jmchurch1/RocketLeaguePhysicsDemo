@@ -32,10 +32,10 @@ void AGoonSpawner::TimerFunction() {
 	// inline if else call
 	if (TimeRemaining == 0)
 	{
-		FVector randPosition = FVector(FMath::RandRange(-500, 500), FMath::RandRange(-500, 500), 2);
+		FVector randPosition = FVector(FMath::RandRange(StartSpawningPosition, EndSpawningPosition), FMath::RandRange(StartSpawningPosition, EndSpawningPosition), 2);
 		FActorSpawnParameters SpawnParams;
 		AGoon* spawnedGoon = (AGoon*)GetWorld()->SpawnActor<AGoon>(AGoon::StaticClass(), randPosition, FRotator(0,0,0), SpawnParams);
-		TimeRemaining = 3;
+		TimeRemaining = SpawnTimeRemaining;
 		PrintString(FString::Printf(TEXT("Spawned Goon")));
 	}
 }

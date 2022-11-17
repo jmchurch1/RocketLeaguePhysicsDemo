@@ -25,5 +25,9 @@
 			"Name": "ChaosVehiclesPlugin",
 			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"Windows",
+		"IOS"
 	]
 }

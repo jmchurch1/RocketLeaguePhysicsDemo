@@ -19,7 +19,17 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	int TimeRemaining = 3;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+	int SpawnTimeRemaining = 3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+		int TimeRemaining = 3;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+		int StartSpawningPosition = -2000;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning")
+		int EndSpawningPosition = 2000;
 
 public:	
 	void TimerFunction();
