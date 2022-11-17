@@ -22,6 +22,9 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timer")
 	int32 TimeRemaining = 20;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Timer")
+		int32 MaxTime = 40;
+
 public:	
 	void TimerFunction();
 

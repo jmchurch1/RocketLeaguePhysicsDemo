@@ -37,4 +37,5 @@ void ATimer::TimerFunction() {
 void ATimer::IncrementTimeRemaining(int time)
 {
 	TimeRemaining += time;
+	TimeRemaining > MaxTime ? TimeRemaining = MaxTime : TimeRemaining = TimeRemaining; 
 }
