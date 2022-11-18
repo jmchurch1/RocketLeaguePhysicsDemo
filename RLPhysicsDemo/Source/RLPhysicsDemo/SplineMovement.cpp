@@ -2,6 +2,7 @@
 
 
 #include "SplineMovement.h"
+#include "Explosion.h"
 
 // Sets default values
 ASplineMovement::ASplineMovement()
@@ -19,6 +20,9 @@ ASplineMovement::ASplineMovement()
 
 	ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/FennecStaticMesh/Fennec_Fennec.Fennec_Fennec'"));
 	Vehicle->SetStaticMesh(MeshAsset.Object);
+
+	MaxHealth = 100;
+	Health = 100;
 }
 
 // Called when the game starts or when spawned
@@ -46,4 +50,17 @@ void ASplineMovement::Tick(float DeltaTime)
 		SplineComponent->GetRotationAtDistanceAlongSpline(currentDistance, ESplineCoordinateSpace::Local),
 		false, false
 		);
+}
+
+UStaticMeshComponent* ASplineMovement::getEnemyVehicle()
+{
+	return Vehicle;
+}
+
+void ASplineMovement::decrementHealth(float damage) 
+{
+	Health -= damage;
+	if (Health <= 0) {
+		Health = MaxHealth;
+	}
 }

@@ -33,10 +33,21 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spline")
 		float Speed;
-
 	
 	float Alpha;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy")
+	float Health;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Enemy")
+	float MaxHealth;
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spline")
 		UTimelineComponent* Timeline;
+
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+		UStaticMeshComponent* getEnemyVehicle();
+
+	UFUNCTION(BlueprintCallable, Category = "Enemy")
+		void decrementHealth(float damage);
 };

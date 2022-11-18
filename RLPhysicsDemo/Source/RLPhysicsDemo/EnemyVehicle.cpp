@@ -13,6 +13,9 @@ AEnemyVehicle::AEnemyVehicle()
 
 	Vehicle = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Vehicle"));
 
+	ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/FennecStaticMesh/Fennec_Fennec.Fennec_Fennec'"));
+	Vehicle->SetStaticMesh(MeshAsset.Object);
+
 	Health = 50;
 }
 

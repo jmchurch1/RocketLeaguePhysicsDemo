@@ -9,8 +9,11 @@ AExplosion::AExplosion()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
-	Sphere = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Vehicle"));
-
+	Sphere = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Explosion"));
+	if (Sphere)
+	{
+		SetRootComponent(Sphere);
+	}
 	ConstructorHelpers::FObjectFinder<UStaticMesh>MeshAsset(TEXT("StaticMesh'/Game/Explosion/Sphere.Sphere'"));
 	ConstructorHelpers::FObjectFinder<UMaterial>SphereMaterial(TEXT("Material'/Game/Explosion/m_sphere.m_sphere'"));
 	Sphere->SetStaticMesh(MeshAsset.Object);
@@ -23,7 +26,6 @@ AExplosion::AExplosion()
 void AExplosion::BeginPlay()
 {
 	Super::BeginPlay();
-	
 }
 
 // Called every frame
